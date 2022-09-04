@@ -78,14 +78,14 @@ a
 
 <v-clicks>
 
-* Transpiler
+* Transpiler - Down-level JavaScript
   * babel, tsc
   * esbuild, swc
 
-* Minifier
+* Minifier - 压缩代码
   * uglify, terser
-  * Google Closure Compiler
   * esbuild
+  * Google Closure Compiler (Java 😂)
 
 * Bundler - 打包代码
   * webpack, rollup
@@ -106,13 +106,14 @@ a
 <v-clicks>
 
 * Deno, Bun
-  * 更牛的 Runtime！
+  * 统一 Runtime！
 
-* swc, esbuild
-  * 一统 Bundler！
+* esbuild, swc
+  * 统一 Bundler！
+  * Parser + Transpier + Minifier + Bundler
 
-* Rome
-  * 一统全家桶！
+* Rome Tools
+  * 统一全家桶！
 
 </v-clicks>
 
