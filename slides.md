@@ -48,13 +48,111 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 # 现代和未来的前端工具链介绍
 
+<v-click>
+
+处理 JavaScript / TypeScript 源代码
+
+</v-click>
+
+<v-clicks>
+
+* Parser - 解析成 AST, 让后面的工具使用
+  * babel, tsc
+  * swc, esbuild
+
+* Formatter - 格式化源代码
+  * prettier
+
+* Linter - 检测错误
+  * eslint, tslint
+
+</v-clicks>
+
 <!--
 a
 -->
 
 ---
 
+# 现代和未来的前端工具链介绍
+
+<v-clicks>
+
+* Transpiler
+  * babel, tsc
+  * esbuild, swc
+
+* Minifier
+  * uglify, terser
+  * Google Closure Compiler
+  * esbuild
+
+* Bundler - 打包代码
+  * webpack, rollup
+  * tsc
+  * esbuild
+
+</v-clicks>
+
+---
+
+# 现代和未来的前端工具链介绍
+
+
+<v-click>
+趋势：一统江湖!
+</v-click>
+
+<v-clicks>
+
+* Deno, Bun
+  * 更牛的 Runtime！
+
+* swc, esbuild
+  * 一统 Bundler！
+
+* Rome
+  * 一统全家桶！
+
+</v-clicks>
+
+---
+layout: statement
+---
+
+
+# 🤔 商业逻辑?
+
+<v-click>
+<div class="mt-5">
+买断开发者流量，用他们的服务 💰💰💰
+</div>
+</v-click>
+
+---
+
 # JavaScript 工具链为什么慢?
+
+<v-clicks>
+
+* 语言自身 - Runtimes
+  * Chrome, Node.js, Deno - V8
+  * Firefox - SpiderMonkey
+  * Safari, Bun - JavaScriptCore
+
+* JIT (Just in Time)
+  * 边解析边编译
+  * 启动需要编译 = 增加启动时间
+  * cpu 优化
+    * CPU 指令
+
+* 内存 和 gc (Garbage Collection)
+  * 运行时 gc 影响性能
+
+* 单线程
+  * 后端无法合理利用多核
+
+</v-clicks>
 
 ---
 
