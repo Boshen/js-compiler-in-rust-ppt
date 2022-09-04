@@ -363,10 +363,10 @@ database "MySql" {
 
 
 ---
-layout: center
-class: text-center
+layout: image
+image: './outro.jpeg'
 ---
 
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+<div class="absolute top-63">
+  <h1>THANK YOU</h1>
+</div>
