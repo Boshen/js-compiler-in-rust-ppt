@@ -144,20 +144,57 @@ layout: statement
 * JIT (Just in Time)
   * 边解析边编译
   * 启动需要编译 = 增加启动时间
-  * cpu 优化
-    * CPU 指令
+  * 没有最优的 CPU 指令优化
 
-* 内存 和 gc (Garbage Collection)
-  * 运行时 gc 影响性能
-
-* 单线程
-  * 后端无法合理利用多核
+* 内存 和 GC (Garbage Collection)
+  * 运行时 GC 影响性能
 
 </v-clicks>
 
 ---
 
+# 应用性能核心需要处理的问题
+
+## Concurrency vs Parallelism
+
+<v-clicks>
+* Concurrency
+  * 同一时间执行更多的任务
+  * 各种 async 模型
+
+* Parallelism
+  * 把一个任务拆分掉跑在多个 CPU 上
+</v-clicks>
+
+---
+layout: statement
+---
+
+# 前端工具链核心逻辑
+
+```
+let asts = [];
+
+for (let file in files) {
+  let ast1 = parse(file);
+  let ast2 = transpile(ast1);
+  let ast3 = minifiy(ast2);
+  asts.push(ast3);
+}
+
+const output = bundle(asts);
+```
+
+都是可以拆的任务！
+
+---
+
 # Native (Rust / Go) 工具链为什么快?
+
+<v-clicks>
+- 不单单是多核
+- 编译到最优 CPU 指令
+</v-clicks>
 
 ---
 
