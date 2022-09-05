@@ -20,7 +20,7 @@ image: ./bg2.jpeg
 
 <div class="absolute bottom-20 left-17">
   <div class="font-700">
-    BY 陈博深
+    &mdash; Boshen
   </div>
   <div class="font-700">
     github.com/boshen
