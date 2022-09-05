@@ -276,7 +276,8 @@ const output = bundle(asts);
 * 为多核而设计
 * 压榨 LLVM, 用更优的 CPU 指令集
 * 内存使用优化到极致
-  - Memory Arena 内存池
+  - 使用 Memory Arena 内存池
+  - 差点以为自己在写游戏引擎
   - 用各种工具排查和优化内存使用情况
 
 </v-clicks>
@@ -287,21 +288,128 @@ Guide: https://github.com/Boshen/javascript-parser-in-rust
 
 </v-click>
 
+---
+layout: statement
+---
+
+# 有了自己的地基，才敢搭建应用
 
 ---
 
-# 挑战 ESLint - 20 倍的性能提升
+# 挑战 ESLint
+
+<v-clicks>
+
+* ESLint 性能问题渐渐成为了我们的瓶颈
+* 极其复杂的配置系统
+* 无法提升能力的插件系统
+* 没有区分开代码风格和代码错误两种基本问题
+* 没有静态类型分析，需要引入 TypeScript - 变得巨慢无比
+* 艰难处理越来越多的巨型 Monorepo - 十几万文件，几百万行代码
+
+</v-clicks>
+
+---
+layout: statement
+---
+
+# 决定：自研企业级 ESLint
+
+---
+
+# 企业级 ESLint 功能
+
+<v-clicks>
+
+* Performance is feature
+* 只检查正确性，不检查风格
+* 开箱即用, 无需配置
+* 更友好的错误信息
+
+</v-clicks>
+
+---
+
+# 自研 ESLint 成果
+
+<v-click>
+
+  <img src="/no-self-compare.png" class="rounded shadow mb-5" />
+
+</v-click>
+
+<v-click>
+
+  <img src="/no-dupe-class-member.jpeg" class="rounded shadow" />
+
+</v-click>
+
+---
+
+# 自研 ESLint 性能
+
+#### 2 秒完成 VScode 仓库 (3200 文件, 786K 行代码)
+
+<v-click>
+
+<div class="flex" style="height:40vh">
+  <img src="/cloc.gif" class="mt-5 rounded shadow" />
+</div>
+
+</v-click>
+
+---
+
+# 自研 ESLint 成果
+
+<v-clicks>
+
+* 内部最大 Monorepo - 15 分钟 vs 20 秒 - 45 倍的性能提升
+* 多核处理每一个文件
+* 多核处理 Linter 规则
+* 困难重重
+  * Control Flow Analysis
+  * Data Analysis
+  * 学习 TypeScript
+
+</v-clicks>
+
 
 
 ---
 
-# 用 JavaScript 时注意不到的性能细节
+# 性能优化经验
 
+<v-clicks>
+
+* 性能不是白给的, 需要花时间打磨
+
+* Cache Locality - 缓存访问局部性
+  * 想方设法减少数据结构的内存，让它进 CPU / L1 / L2 缓存
+  * 在 Hot Path 上面统计使用频率，决定是否引入跟高一层的缓存 (Heap, Disk)
+
+* 申请和释放内存真的很耗时
+  * 改为使用内存池后，性能提升 20%+
+  * 一些系统 API 会无意间使用内存, 劲量统一申请，提前申请容量 (Capacity)
+
+* 系统学习排查性能问题
+  * 多看其他编译器源码，学习细节
+  * 学会统计 Code Path 的执行次数，决定是否使用缓存
+
+
+* Rust 并没有想象的那么难
+
+</v-clicks>
 
 ---
+layout: statement
+---
 
-# 总结
+# 期待开源
 
+<div class="mt-5">
+关注 github.com/boshen
+</div>
 
 ---
 layout: image
