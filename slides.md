@@ -346,24 +346,11 @@ layout: statement
 
 ---
 
-# 自研 ESLint 性能
-
-#### 2 秒完成 VScode 仓库 (3200 文件, 786K 行代码)
-
-<v-click>
-
-<div class="flex" style="height:40vh">
-  <img src="/cloc.gif" class="mt-5 rounded shadow" />
-</div>
-
-</v-click>
-
----
-
 # 自研 ESLint 成果
 
 <v-clicks>
 
+* 2 秒完成 VSCode 仓库 (3200 文件, 786K 行代码)
 * 内部最大 Monorepo - 15 分钟 vs 20 秒 - 45 倍的性能提升
 * 多核处理每一个文件
 * 多核处理 Linter 规则
