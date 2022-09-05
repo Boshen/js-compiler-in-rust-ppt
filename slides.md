@@ -40,7 +40,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 * Native (Rust / Go) 工具链为什么快?
 * 尝试用 Rust 写 JavaScript 编译器
 * 挑战 ESLint - 20 倍的性能提升
-* 用 JavaScript 时注意不到的性能细节
+* 性能优化经验
 
 
 ---
