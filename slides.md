@@ -3,7 +3,7 @@ theme: apple-basic
 highlighter: shiki
 lineNumbers: false
 css: unocss
-title: 用 Rust 写 JavaScript 编译器
+title: JavaScript Compiler in Rust
 exportFilename: js-compiler-in-rust
 colorSchema: dark
 favicon: ./favicon.png
@@ -12,7 +12,7 @@ image: ./bg2.jpeg
 ---
 
 <div class="absolute top-40 left-17">
-  <h1>用 Rust 写 JavaScript 编译器</h1>
+  <h1>JavaScript Compiler in Rust</h1>
   <br/>
   <p>前端性能及新技术实践</p>
   <p>字节跳动 Dev Better 技术沙龙</p>
@@ -20,16 +20,13 @@ image: ./bg2.jpeg
 
 <div class="absolute bottom-20 left-17">
   <div class="font-700">
-    &mdash; Boshen
+    Speaker: Boshen
   </div>
   <div class="font-700">
     github.com/boshen
   </div>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 
@@ -37,9 +34,9 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 * 现代和未来的前端工具链介绍
 * JavaScript 工具链为什么慢?
-* Native (Rust / Go) 工具链为什么快?
-* 尝试用 Rust 写 JavaScript 编译器
-* 挑战 ESLint - 20 倍的性能提升
+* Native 工具链为什么快?
+* 尝试用 Rust 自研 JavaScript 编译器
+* 挑战 ESLint - 20 多倍的性能提升
 * 性能优化经验
 
 
@@ -52,18 +49,18 @@ layout: two-cols
 <v-clicks>
 
 * Parser - 解析成 AST, 让后面的工具使用
-  * Babel, tsc
+  * babel, tsc
   * swc, esbuild
 
 * Formatter - 格式化源代码
-  * Prettier
+  * prettier
 
 * Linter - 检测错误
-  * ESLint, TSLint
+  * eslint, tslint
 
 * Transpiler - Down-level JavaScript
-  * Babel, tsc
-  * Esbuild, swc
+  * babel, tsc
+  * esbuild, swc
 
 </v-clicks>
 
@@ -73,18 +70,12 @@ layout: two-cols
 
 * Minifier - 压缩代码
   * uglify, terser
-  * esbuild
   * Google Closure Compiler (Java 😂)
+  * esbuild, (swc)
 
 * Bundler - 打包代码
-  * Webpack, Rollup
-  * tsc
-  * esbuild
-
-* All-In-One - 集成上面所有工具
-  * Webpack
-  * Vite
-  * Parcel
+  * browserify, webpack, rollup
+  * parcel, esbuild
 
 </v-clicks>
 
@@ -109,7 +100,7 @@ a
   * 用 Rust / Zig 统一 Runtime
 
 * swc, esbuild
-  * 用 Rust / Go 重写所有工具
+  * 用 Rust / Go 重写 Bundler
 
 * Rome Tools
   * 用 Rust 统一全家桶！
@@ -126,7 +117,7 @@ layout: statement
 <v-click>
 
 <div class="mt-5">
-买断开发者流量，用他们的服务 💰💰💰
+用性能抢占开发者流量，卖各种服务 💰💰💰
 </div>
 
 </v-click>
@@ -136,7 +127,7 @@ layout: statement
 layout: two-cols
 ---
 
-# JS 工具链为什么慢?
+# JS 工具链为什么慢 🐌?
 
 <v-clicks>
 
@@ -160,9 +151,10 @@ layout: two-cols
 <v-clicks>
 
 * 架构
+  * 算法问题
   * 插件系统
   * 没有重复使用 AST
-  * 融合接口不兼容的工具
+  * 集成接口不兼容的工具
 
 </v-clicks>
 
@@ -230,7 +222,7 @@ const output = bundle(asts);
 
 ---
 
-# Native (Rust / Go) 工具链为什么快?
+# Native (Rust / Go) 工具链为什么快 ⚡?
 
 <v-clicks>
 
@@ -254,13 +246,13 @@ const output = bundle(asts);
 
 ---
 
-# 尝试用 Rust 写 JavaScript 编译器
+# 尝试用 Rust 自研 JavaScript 编译器
 
 <v-clicks>
 
 * 过去半年时间自研 JavaScript / TypeScript Parser
 * 跑通 99% Test262, babel 以及 TypeScript 语法测试
-* 比 swc parser 快几倍，同 esbuild 和 Rome 在一个性能级别
+* 比 swc parser 快一些，同 esbuild 和 Rome 在一个性能级别
 
 </v-clicks>
 
@@ -288,11 +280,13 @@ Guide: https://github.com/Boshen/javascript-parser-in-rust
 
 </v-click>
 
+
 ---
 layout: statement
 ---
 
 # 有了自己的地基，才敢搭建应用
+
 
 ---
 
@@ -305,15 +299,17 @@ layout: statement
 * 无法提升能力的插件系统
 * 没有区分开代码风格和代码错误两种基本问题
 * 没有静态类型分析，需要引入 TypeScript - 变得巨慢无比
-* 艰难处理越来越多的巨型 Monorepo - 十几万文件，几百万行代码
+* 难处理巨型 Monorepo - 十几万文件，几百万行代码
 
 </v-clicks>
+
 
 ---
 layout: statement
 ---
 
 # 决定：自研企业级 ESLint
+
 
 ---
 
@@ -327,6 +323,7 @@ layout: statement
 * 更友好的错误信息
 
 </v-clicks>
+
 
 ---
 
@@ -344,23 +341,23 @@ layout: statement
 
 </v-click>
 
+
 ---
 
 # 自研 ESLint 成果
 
 <v-clicks>
 
-* 2 秒完成 VSCode 仓库 (3200 文件, 786K 行代码)
-* 内部最大 Monorepo - 15 分钟 vs 20 秒 - 45 倍的性能提升
+* VSCode 仓库 (https://github.com/microsoft/vscode)
+  * 3.2K 文件, 786K 行代码
+  * 2 秒完成
+* 公司内部最大 Monorepo
+  * 500万行代码
+  * eslint 15 分钟 vs 20 秒 - 45 倍的性能提升
 * 多核处理每一个文件
-* 多核处理 Linter 规则
-* 困难重重
-  * Control Flow Analysis
-  * Data Analysis
-  * 学习 TypeScript
+* 多核处理每一条 Linter 规则
 
 </v-clicks>
-
 
 
 ---
@@ -384,9 +381,10 @@ layout: statement
   * 学会统计 Code Path 的执行次数，决定是否使用缓存
 
 
-* Rust 并没有想象的那么难
+* Rust 并没有想象的那么难, 欢迎来一起学习
 
 </v-clicks>
+
 
 ---
 layout: statement
@@ -397,6 +395,7 @@ layout: statement
 <div class="mt-5">
 关注 github.com/boshen
 </div>
+
 
 ---
 layout: image
