@@ -12,7 +12,7 @@ image: ./bg2.jpeg
 ---
 
 <div class="absolute top-40 left-17">
-  <h1>JavaScript Compiler in Rust</h1>
+  <h1>用 Rust 写 JavaScript 编译器</h1>
   <br/>
   <p>前端性能及新技术实践</p>
   <p>字节跳动 Dev Better 技术沙龙</p>
